@@ -25,6 +25,11 @@ test('removes whitespace from Literal nodes', t => {
   t.deepEqual(actual, expected)
 })
 
+test('handles nested templates correctly', t => {
+    let { actual, expected } = compare('literal', extraoptions)
+    t.deepEqual(actual, expected)
+})
+
 test('returns null if no changes were made', t => {
   t.is(transform('ast/output.js'), null)
 })
