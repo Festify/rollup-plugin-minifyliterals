@@ -4,6 +4,7 @@ import { walk } from 'estree-walker'
 import MagicString from 'magic-string'
 import { createFilter } from 'rollup-pluginutils'
 import { minify } from 'html-minifier'
+import { MinifyTemplate } from "./minify-templates";
 
 const htmlminifier = {
   collapseWhitespace: true
@@ -42,6 +43,7 @@ export default function minifyliterals (options = {}) {
       }
 
       const magicString = new MagicString(code)
+      const minifyTemplates = new MinifyTemplate(code, magicString, options.htmlminifier)
       let edited = false
 
       walk(ast, {
@@ -52,10 +54,8 @@ export default function minifyliterals (options = {}) {
             magicString.addSourcemapLocation(node.start)
             magicString.addSourcemapLocation(node.end)
           }
-          if (node.type === 'TemplateElement') {
-            value = node.value.raw
-            transformed = minify(value, options.htmlminifier)
-          }
+
+          minifyTemplates.enter(node);
 
           if (node.type === 'Literal' && options.literals !== false) {
             value = node.raw
@@ -91,8 +91,14 @@ export default function minifyliterals (options = {}) {
             edited = true
             magicString.overwrite(node.start, node.end, transformed)
           }
+        },
+
+        leave (node) {
+          minifyTemplates.leave(node);
         }
       })
+
+      edited = edited || minifyTemplates.edited
 
       if (!edited) return null
       code = magicString.toString()
