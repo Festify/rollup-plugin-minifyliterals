@@ -1,6 +1,6 @@
 # rollup-plugin-minifyliterals
 
-Minify html in template literals using html-minifier.
+Minify html in template literals using html-minifier. Tmeplate expressions are replaced with a placeholder before being minified. Supports nested templates in expresions.
 
 Experimental support for minifying templates literals that have already been transpiled (i.e. string concatenation).
 
