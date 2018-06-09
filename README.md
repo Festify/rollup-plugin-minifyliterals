@@ -1,3 +1,5 @@
+**:rotating_light: WARNING: The npm package and active development has been moved to [Festify/rollup-plugin-minifyliterals](https://github.com/Festify/rollup-plugin-minifyliterals). This repository is no longer maintained.**
+
 # rollup-plugin-minifyliterals
 
 Minify html in template literals using html-minifier.
