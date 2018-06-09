@@ -4,6 +4,9 @@ Minify html in template literals using html-minifier. Tmeplate expressions are r
 
 Experimental support for minifying templates literals that have already been transpiled (i.e. string concatenation).
 
+### Credits
+
+This plugin was originally envisioned and created by [Terrence Tempest Wood](https://github.com/tmpst).
 
 ## Installation
 
