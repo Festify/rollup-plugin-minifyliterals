@@ -10,3 +10,11 @@ before_install: yarn global add greenkeeper-lockfile@1
 before_script: greenkeeper-lockfile-update
 
 after_script: greenkeeper-lockfile-upload
+
+deploy:
+  - provider: npm
+    email: $NPM_DPL_EMAIL
+    api_key: $NPM_DPL_TOKEN
+    skip_cleanup: true
+    on:
+      tags: true
