@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-minifyliterals",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Minify html in template literals.",
   "main": "dist/rollup-plugin-minifyliterals.cjs.js",
   "jsnext:main": "dist/rollup-plugin-minifyliterals.es.js",
